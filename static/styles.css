@@ -53,3 +53,25 @@ body {
     color: #ccc;
   }
   
+  .post-thumbnail {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .tags {
+    margin: 0.5rem 0 1rem;
+  }
+  
+  .tag {
+    display: inline-block;
+    background: #333;
+    color: #6cf;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.3rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+  
