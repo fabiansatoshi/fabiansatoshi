@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+<link rel="stylesheet" href="{{ pathPrefix }}static/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+  {% if showHeader != false %}
+    <header>
+
+    </header>
+{% endif %}
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <hr />
+      <p>Hecho con ❤️ por Fabián González - 2025</p>
+    </footer>
+  </body>
+</html>
