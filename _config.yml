@@ -1,0 +1,15 @@
+title: fabiansatoshi
+email: tuemail@example.com
+description: "Portal personal de Fabián"
+baseurl: "" # déjalo vacío por ahora
+url: "https://fabiansatoshi.github.io"
+github_username: fabiansatoshi
+
+permalink: /:categories/:title.html
+
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
