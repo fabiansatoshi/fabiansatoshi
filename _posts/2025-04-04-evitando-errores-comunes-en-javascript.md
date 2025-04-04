@@ -3,6 +3,8 @@ layout: post
 title: "Evitando errores comunes en JavaScript"
 date: 2025-04-04
 categories: programacion
+image: /images/mi-post.jpg
+
 ---
 
 ## Evitando errores comunes en JavaScript

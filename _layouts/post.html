@@ -3,9 +3,49 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  <p class="date">{{ page.date | date: "%d %B %Y" }}</p>
-  <div class="content">
+
+  <div class="post-head">
+
+    <!-- Imagen destacada -->
+    <div class="post-image">
+        <img class="lazy loaded" alt="{{ page.title }}" src="{{ page.image | default: '/images/default.jpg' }}">
+
+    </div>
+
+    <!-- Info del post -->
+    <div class="post-info">
+
+      {% if page.categories.size > 0 %}
+      <div class="post-tags">
+        <a href="/tags/?tag={{ page.categories[0] }}" class="post-tag" style="background: #4643ec;">
+          {{ page.categories[0] | capitalize }}
+        </a>
+      </div>
+      {% endif %}
+
+      <h1 class="post-title">{{ page.title }}</h1>
+
+      <div class="post-meta">
+        <a href="/acerca-de/" class="post-meta__image">
+          <img class="lazy loaded" alt="Fabián González" src="/images/avatar.jpg">
+        </a>
+
+        <div class="post-meta__content">
+          <a class="post-meta__author" href="/acerca-de/">Fabián González</a>
+          <div class="post-meta__bottom">
+            <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+              {{ page.date | date: "%d %b, %Y" }}
+            </time> –
+            <span class="post-minutes">3 min read</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="post-content">
     {{ content }}
   </div>
+
 </article>

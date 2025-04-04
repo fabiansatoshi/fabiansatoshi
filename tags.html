@@ -1,0 +1,56 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+
+<section class="tags-page section">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">Posts por etiqueta</h2>
+    </div>
+
+    <div id="tag-posts" class="row grid">
+      <!-- Los posts se cargarán aquí por JS -->
+    </div>
+  </div>
+</section>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const tag = urlParams.get('tag');
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById('tag-posts');
+    if (!tag) {
+      container.innerHTML = '<p>No se especificó ninguna etiqueta.</p>';
+      return;
+    }
+
+    fetch('/index.json') // necesitamos generar este archivo
+      .then(response => response.json())
+      .then(data => {
+        const filtered = data.filter(post => post.categories.includes(tag));
+        if (filtered.length === 0) {
+          container.innerHTML = '<p>No se encontraron posts con la etiqueta: <strong>' + tag + '</strong></p>';
+          return;
+        }
+
+        container.innerHTML = filtered.map(post => `
+          <div class="article article--flexible col col-6 col-t-12 grid__post animate">
+            <div class="article__inner">
+              <div class="article__head">
+                <a class="article__image" href="${post.url}">
+                  <img class="lazy loaded" src="/images/default.jpg" alt="${post.title}">
+                </a>
+              </div>
+              <div class="article__content">
+                <h2 class="article__title"><a href="${post.url}">${post.title}</a></h2>
+                <p class="article__excerpt">${post.excerpt}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      });
+  });
+</script>
